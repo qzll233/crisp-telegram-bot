@@ -3,11 +3,7 @@
 
 name: Go
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: workflow_dispatch
 
 jobs:
 
@@ -23,7 +19,11 @@ jobs:
 
     - name: Build
       run: go build -v ./...
-      with: 
-        upload-artifact: true
-    - name: Test
-      run: go test -v ./...
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name: bot
+          path: /*
+          retention-days: 1
+    
