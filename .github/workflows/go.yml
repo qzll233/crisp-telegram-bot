@@ -4,7 +4,10 @@
 name: Go
 
 on: workflow_dispatch
-
+env: 
+  CGO_ENABLED: 0
+  GOOS: linux
+  GOARCH: amd64 
 jobs:
 
   build:
